@@ -78,6 +78,8 @@ fi
 }
 
 oph10() {
+    oldLocation=$(pwd)
+     
     cdphi
 
     imageName=$(ls|fzf)
@@ -85,6 +87,8 @@ oph10() {
     
     imageNameWithExtension=$(find . -name "*.image")
     ph10 $imageNameWithExtension
+    
+    cd $oldLocation
 }
 
 gph10() {
