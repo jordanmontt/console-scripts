@@ -1,6 +1,9 @@
 # My scripts
 
 ```bash
+####### Theme
+ZSH_THEME="refined"
+
 ####### Aliases
 
 # Go to my GitHub clones folder
@@ -38,8 +41,27 @@ oph() {
     cdphi
     # Get image name using fzf
     imageName=$(ls|fzf)
+    if [ -z $imageName ]
+    then
+        echo 'Select an image'
+        return -1
+    fi
     cd "$imageName"
     ph .
+    cd $oldLocation
+}
+
+rph() {
+    oldLocation=$(pwd)
+    cdphi
+    # Get image name using fzf
+    imageName=$(ls|fzf)
+    if [ -z $imageName ]
+    then
+        echo 'Select an image to remove'
+        return -1
+    fi
+    rm -rf "$imageName"
     cd $oldLocation
 }
 
