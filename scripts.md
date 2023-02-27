@@ -11,7 +11,7 @@ alias cdphi="cd ~/Documents/Pharo/images"
 # Open default Pharo, if no image, run the vm
 ph() {
     var=${1}
-    vm='~/Documents/Pharo/vms/110-x64/Pharo.app/Contents/MacOS/Pharo'
+    vm='/Users/sebastian/Documents/Pharo/vms/110-x64/Pharo.app/Contents/MacOS/Pharo'
     if [ -z $var ]
     then
         $vm
@@ -67,12 +67,13 @@ gph() {
 # Same scripts as default Pharo but for Pharo 10
 
 ph10() {
-var=${1}
-if [ -z "$var" ]
-then
-      /Users/sebastian/Documents/Pharo/vms/100-x64/Pharo.app/Contents/MacOS/Pharo
-else
-      /Users/sebastian/Documents/Pharo/vms/100-x64/Pharo.app/Contents/MacOS/Pharo $var
+    var=${1}
+    vm='/Users/sebastian/Documents/Pharo/vms/100-x64/Pharo.app/Contents/MacOS/Pharo'
+    if [ -z "$var" ]
+    then
+        $vm
+    else
+        $vm $var
 fi
 }
 
