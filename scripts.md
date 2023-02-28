@@ -109,14 +109,14 @@ phl() {
 ophl() {
     oldLocation=$(pwd)
     cdphi
-
+    
     imageName=$(ls|fzf)
     if [ -z $imageName ]
     then
         echo "Select an image to open"
         cd $oldLocation
         return -1
-
+    fi
     cd "$imageName"
     imagePath=$(find . -name "*.image")
     phl $imagePath
