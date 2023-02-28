@@ -111,8 +111,13 @@ ophl() {
     cdphi
 
     imageName=$(ls|fzf)
+    if [ -z $imageName ]
+    then
+        echo "Select an image to open"
+        cd $oldLocation
+        return -1
+
     cd "$imageName"
-    
     imagePath=$(find . -name "*.image")
     phl $imagePath
 
