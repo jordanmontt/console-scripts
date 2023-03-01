@@ -34,6 +34,11 @@ alias cdgc="cd ~/Documents/Git-Clones/"
 
 ####### GIT
 
+alias gpl="git pull"
+alias gps="git push"
+alias gco="git commit"
+alias gaa="git add ."
+
 gcl() {
     cdgc
     remote=${1}
