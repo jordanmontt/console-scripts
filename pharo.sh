@@ -1,4 +1,4 @@
-# Configuration
+# Configuration for Pharo Scripts
 #!/bin/bash
 
 ### Variables
@@ -25,12 +25,14 @@ open_pharo_() {
     fi
 }
 
+### End private functions
+
 oph() {
     old_location=$(pwd)
 
     cdphi
     # FZF is a library that support fuzze search and other cool features for string matching
-    image_name=$(ls | fzf)
+    image_name=$(ls -t | fzf)
     if [ -z $image_name ]; then
         return -1
     fi
@@ -45,7 +47,7 @@ rph() {
 
     cdphi
     # fzf is a library that support fuzze search and other cool features for string matching
-    image_name=$(ls | fzf)
+    image_name=$(ls -t | fzf)
     if [ -z $image_name ]; then
         return -1
     fi
@@ -114,7 +116,7 @@ ophl() {
     old_location=$(pwd)
 
     cdphi
-    image_name=$(ls | fzf)
+    image_name=$(ls -t | fzf)
     if [ -z $image_name ]; then
         cd $old_location
         return -1
