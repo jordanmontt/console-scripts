@@ -125,7 +125,3 @@ ophl() {
 
     cd $old_location
 }
-
-###### Scripts Pharo 10
-
-# Same scripts as default Pharo but for Pharo 10
