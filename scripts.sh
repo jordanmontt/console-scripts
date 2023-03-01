@@ -38,6 +38,7 @@ alias gpl="git pull"
 alias gps="git push"
 alias gco="git commit"
 alias gaa="git add ."
+alias gst="git status"
 
 gcl() {
     cdgc

@@ -27,7 +27,7 @@ open_pharo_() {
 
 ### End private functions
 
-oph() {
+pho() {
     old_location=$(pwd)
 
     cdphi
@@ -42,7 +42,7 @@ oph() {
     cd $old_location
 }
 
-rph() {
+phr() {
     old_location=$(pwd)
 
     cdphi
@@ -63,7 +63,7 @@ rph() {
 }
 
 # Download only Pharo image using zero conf. Image name optional parameter. Creates the folder and renames the files
-gph() {
+phg() {
     oldLocation=$(pwd)
 
     # Pharo version to download
@@ -112,7 +112,7 @@ phl() {
     fi
 }
 
-ophl() {
+phlo() {
     old_location=$(pwd)
 
     cdphi
