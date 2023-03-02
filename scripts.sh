@@ -25,6 +25,8 @@ setopt HIST_FIND_NO_DUPS
 source $ZSH/themes/spaceship-prompt/spaceship.zsh-theme
 # ~/.zsh/plugins: git clone git@github.com:zsh-users/zsh-autosuggestions.git
 source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+# ~/.zsh/plugins: git clone git@github.com:zdharma-zmirror/fast-syntax-highlighting.git
+source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 ####### Aliases
 
