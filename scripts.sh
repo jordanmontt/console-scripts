@@ -30,7 +30,6 @@ source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
 ####### Aliases
 
-# Go to my GitHub clones folder
 alias ls='ls -GFh'
 alias cdgc="cd ~/Documents/Git-Clones/"
 
@@ -41,6 +40,7 @@ alias gps="git push"
 alias gco="git commit"
 alias gaa="git add ."
 alias gst="git status"
+alias gacp="gaa && gco && gpl && gps"
 
 gcl() {
     cdgc

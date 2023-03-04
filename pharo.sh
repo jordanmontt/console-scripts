@@ -12,7 +12,17 @@ alias cdphi="cd $pharo_images_location"
 
 ### Private functions
 
-open_pharo_() {
+_find_current_directory_() {
+    # some magic to find out the real location of this script dealing with symlinks
+    DIR=$(readlink "$0") || DIR="$0"
+    DIR=$(dirname "$DIR")
+    cd "$DIR"
+    DIR=$(pwd)
+    cd - >/dev/null
+    return $DIR
+}
+
+_open_pharo_() {
     directory=${1}
     if [ -z $directory ]; then
         echo "Error, you need to send an image directory as argument"
@@ -21,34 +31,48 @@ open_pharo_() {
         local_vm='pharo-vm/Pharo.app/Contents/MacOS/Pharo'
         image=$(find . -name "*.image")
         echo 'Opening Pharo in location: '$(pwd)
-        $local_vm $image
+
+        # disable parameter expansion to forward all arguments unprocessed to the VM
+        set -f
+        $local_vm $image ${@:2}
     fi
+}
+
+_rename_images_files() {
+    name=${1}
+    new_name=${2}
+    echo "Renaming Pharo image ${name} to ${new_name}"
+    mv "${name}".image "${new_name}".image
+    mv "${name}".changes "${new_name}".changes
 }
 
 ### End private functions
 
-pho() {
-    old_location=$(pwd)
+open() {
+    old_location=$(_find_current_directory_)
 
     cdphi
-    # FZF is a library that support fuzze search and other cool features for string matching
+
     image_name=$(ls -t | fzf)
     if [ -z $image_name ]; then
+        cd $old_location
         return -1
     fi
+
     cd "$image_name"
-    open_pharo_ .
+    _open_pharo_ . ${@}
 
     cd $old_location
 }
 
-phr() {
+remove() {
     old_location=$(pwd)
 
     cdphi
-    # fzf is a library that support fuzze search and other cool features for string matching
+
     image_name=$(ls -t | fzf)
     if [ -z $image_name ]; then
+        cd $old_location
         return -1
     fi
 
@@ -62,9 +86,41 @@ phr() {
     cd $old_location
 }
 
+duplicate() {
+    old_location=$(pwd)
+
+    cdphi
+    image_to_duplicate_name=$(ls -t | fzf)
+    if [ -z $image_to_duplicate_name ]; then
+        cd $old_location
+        return -1
+    fi
+
+    echo "The name for the image: (skip to copy the name)"
+    read new_image_name
+
+    # Apprend an incremental number to the end of the image name.
+    # Searchs for the next number
+    if [ -z $new_image_name ]; then
+        counter=1
+        does_the_image_exists=$(find . -name "${image_to_duplicate_name%?}-${counter}" -maxdepth 1)
+        while [ $does_the_image_exists ]; do
+            counter=$counter + 1
+            does_the_image_exists=$(find . -name "${image_to_duplicate_name%?}-${counter}" -maxdepth 1)
+        done
+        new_image_name="${image_to_duplicate_name%?}-${counter}"
+    fi
+
+    cp -R $image_to_duplicate_name $new_image_name
+    cd $new_image_name
+    _rename_images_files ${image_to_duplicate_name%?} $new_image_name
+
+    cd $old_location
+}
+
 # Download only Pharo image using zero conf. Image name optional parameter. Creates the folder and renames the files
-phg() {
-    oldLocation=$(pwd)
+new() {
+    old_location=$(_find_current_directory_)
 
     # Pharo version to download
     pharo_version=${1}
@@ -73,57 +129,27 @@ phg() {
     fi
 
     #Getting image name
-    echo 'Enter an image name:'
-    read name
-    if [ -z $name ]; then
-        return -1
+    current_date=$(date +"%d-%m-%Y-%Hh%M")
+    echo "Enter an image name: (skip to use ${current_date})"
+    read image_name
+    if [ -z $image_name ]; then
+        image_name=$current_date
     fi
 
-    # Creating folder
+    # Creating folder and go
     cdphi
-    mkdir $name
-    cd $name
+    mkdir $image_name
+    cd $image_name
 
     # Download Pharo
     link_to_download="https://get.pharo.org/64/${pharo_version}0+vm"
     curl -L $link_to_download | bash
 
-    # Rename files to name
-    echo 'Renaming files to '$name
-    mv Pharo.image "$name".image
-    mv Pharo.changes "$name".changes
+    # Rename files to image_name
+   _rename_images_files "Pharo" $image_name
 
     # Open Pharo
-    open_pharo_ .
-
-    cd $oldLocation
-}
-
-####### Pharo Launcher
-# Same commands but running the image with the vm that was downloaded by the
-
-phl() {
-    image_path=${1}
-    pharo_launcher_vm='/Users/sebastian/Documents/Pharo/vms/110-x64/Pharo.app/Contents/MacOS/Pharo'
-    if [ -z $image_path ]; then
-        echo "Error, need to send an image path as argument"
-    else
-        $pharo_launcher_vm $image_path
-    fi
-}
-
-phlo() {
-    old_location=$(pwd)
-
-    cdphi
-    image_name=$(ls -t | fzf)
-    if [ -z $image_name ]; then
-        cd $old_location
-        return -1
-    fi
-    cd "$image_name"
-    image_path=$(find . -name "*.image")
-    phl $image_path
+    _open_pharo_ .
 
     cd $old_location
 }
