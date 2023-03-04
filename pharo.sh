@@ -105,7 +105,7 @@ duplicate() {
         counter=1
         does_the_image_exists=$(find . -name "${image_to_duplicate_name%?}-${counter}" -maxdepth 1)
         while [ $does_the_image_exists ]; do
-            counter=$counter + 1
+            counter=$((counter + 1))
             does_the_image_exists=$(find . -name "${image_to_duplicate_name%?}-${counter}" -maxdepth 1)
         done
         new_image_name="${image_to_duplicate_name%?}-${counter}"
