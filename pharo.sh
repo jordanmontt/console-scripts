@@ -100,7 +100,7 @@ duplicate() {
     echo "The name for the image: (skip to copy the name)"
     read new_image_name
 
-    # Apprend an incremental number to the end of the image name.
+    # Append an incremental number to the end of the image name.
     # Searchs for the next number
     if [ -z $new_image_name ]; then
         counter=1
