@@ -1,5 +1,6 @@
 # Configuration for Pharo Scripts
 #!/bin/bash
+#!/usr/bin/env bash
 
 ### Variables
 
@@ -14,12 +15,12 @@ alias cdphi="cd $pharo_images_location"
 
 _find_current_directory_() {
     # some magic to find out the real location of this script dealing with symlinks
-    DIR=$(readlink "$0") || DIR="$0"
-    DIR=$(dirname "$DIR")
+    DIR=`readlink "$0"` || DIR="$0";
+    DIR=`dirname "$DIR"`;
     cd "$DIR"
-    DIR=$(pwd)
-    cd - >/dev/null
-    return $DIR
+    DIR=`pwd`
+    cd - > /dev/null
+    echo $DIR
 }
 
 _open_pharo_() {
