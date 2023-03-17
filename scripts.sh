@@ -31,6 +31,7 @@ source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 ####### PATH Variable modifications
 # https://github.com/hernanmd/pi
 export PATH="$PATH:/Users/sebastian/.pi/pi/bin/"
+export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 
 ####### Aliases
 
