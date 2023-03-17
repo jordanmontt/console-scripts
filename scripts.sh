@@ -37,6 +37,7 @@ export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 
 alias ls='ls -GFh'
 alias cdgc="cd ~/Documents/Git-Clones/"
+alias cdphi="cd ~/Documents/Pharo/images"
 
 ####### GIT
 
