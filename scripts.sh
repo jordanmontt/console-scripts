@@ -28,6 +28,10 @@ source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # ~/.zsh/plugins: git clone git@github.com:zdharma-zmirror/fast-syntax-highlighting.git
 source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+####### PATH Variable modifications
+# https://github.com/hernanmd/pi
+export PATH="$PATH:/Users/sebastian/.pi/pi/bin/"
+
 ####### Aliases
 
 alias ls='ls -GFh'
