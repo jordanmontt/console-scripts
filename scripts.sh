@@ -38,6 +38,7 @@ export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 alias ls='ls -GFh'
 alias cdgc="cd ~/Documents/Git-Clones/"
 alias cdphi="cd ~/Documents/Pharo/images"
+alias pharovm='~/Documents/Pharo/vms/120-x64/Pharo.app/Contents/MacOS/Pharo'
 
 ####### GIT
 
