@@ -28,6 +28,10 @@ source $ZSH/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 # ~/.zsh/plugins: git clone git@github.com:zdharma-zmirror/fast-syntax-highlighting.git
 source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+## Colors
+LS_COLORS="di=0;31"
+export LS_COLORS
+
 ####### PATH Variable modifications
 # https://github.com/hernanmd/pi
 export PATH="$PATH:/Users/sebastian/.pi/pi/bin/"
@@ -37,7 +41,7 @@ export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 
 alias ls='ls -GFh'
 alias cdgc="cd ~/Documents/Git-Clones/"
-alias cdpg="cd ~/Documents/Git-Clones/pharo-green/"
+alias cdpg="cd ~/Documents/Git-Clones/pharo-green-profiler/"
 alias cdphi="cd ~/Documents/Pharo/images"
 alias pharovm='~/Documents/Pharo/vms/120-x64/Pharo.app/Contents/MacOS/Pharo'
 
