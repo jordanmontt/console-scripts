@@ -1,0 +1,31 @@
+## This is my personal configuration file for searXNG https://github.com/searxng/searxng
+
+# see https://docs.searxng.org/admin/settings/settings.html#settings-use-default-settings
+use_default_settings:
+  engines:
+    remove:
+      - google
+server:
+  # base_url is defined in the SEARXNG_BASE_URL environment variable, see .env and docker-compose.yml
+  secret_key: "9e719c585fb7b3cc2aa42d59549e03480b051357c94aec97c53f949ca81da85e"  # change this!
+  limiter: true  # can be disabled for a private instance
+  image_proxy: true
+  limiter: true
+  # method: "GET"
+engines:
+  - name: mojeek
+    disabled: false
+  - name: startpage
+    disabled: false
+  - name: qwant videos
+    disabled: false
+  - name: qwant images
+    disabled: false
+  - name: duckduckgo
+    disabled: false
+  - name: apple maps
+    disabled: false
+ui:
+  static_use_hash: true
+redis:
+  url: redis://redis:6379/0
