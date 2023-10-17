@@ -1,5 +1,6 @@
 ## This is my personal configuration file for searXNG https://github.com/searxng/searxng
 # See examples in https://github.com/unixfox/k8s/blob/master/releases/searx/searx/values.yaml#L112
+# To configure the UI, for example to open the results in a new tab, check https://docs.searxng.org/admin/settings/settings_ui.html
 
 # see https://docs.searxng.org/admin/settings/settings.html#settings-use-default-settings
 use_default_settings:
@@ -28,5 +29,6 @@ engines:
     disabled: false
 ui:
   static_use_hash: true
+  results_on_new_tab: true
 redis:
   url: redis://redis:6379/0
