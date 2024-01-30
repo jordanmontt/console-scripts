@@ -35,10 +35,11 @@ export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 ####### Aliases
 
 alias exa='exa -F'
+
 alias cdgc="cd ~/Documents/Git-Clones/"
 alias cdpg="cd ~/Documents/Git-Clones/pharo-green-profiler/"
 alias cdphi="cd ~/Documents/PharoImages"
-alias pharovm='~/Documents/Pharo/vms/120-x64/Pharo.app/Contents/MacOS/Pharo'
+alias cdpa="cd ~/Documents/Git-Clones/Papers"
 
 ####### GIT
 
