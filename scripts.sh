@@ -35,6 +35,7 @@ export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 ####### Aliases
 
 alias d='exa -lhmU --no-user --no-permissions'
+alias dt='d -T'
 
 alias cdgc="cd ~/Documents/Git-Clones/"
 alias cdpg="cd ~/Documents/Git-Clones/pharo-green-profiler/"
