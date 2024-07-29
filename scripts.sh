@@ -32,6 +32,11 @@ source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 ####### PATH Variable modifications
 export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 
+### Semantic grep (sgrep)
+export PATH="$PATH:/Users/sebastian/Documents/Git-Clones/semantic-grep/"
+alias sgrep='sgrep -C 1 -n -threshold 0.55' 
+
+
 ####### Aliases
 
 alias d='exa -lhmU --no-user --no-permissions'
