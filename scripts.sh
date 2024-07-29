@@ -33,6 +33,7 @@ source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 export PATH="$PATH:/Users/sebastian/.pharo/pharo-cli/bin/"
 
 ### Semantic grep (sgrep)
+# https://github.com/arunsupe/semantic-grep
 export PATH="$PATH:/Users/sebastian/Documents/Git-Clones/semantic-grep/"
 alias sgrep='sgrep -C 1 -n -threshold 0.55' 
 
